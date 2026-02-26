@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "ansible-hardened-docker",
+    "title": "Hardened Docker Host for Free Using Ansible",
+    "description": "Practical server automation for small IT shops using Ansible playbooks to provision secure Docker hosts with Fail2Ban and automatic updates.",
+    "date": "2026-02-13",
+    "file": "posts/ansible-hardened-docker.md",
+    "substack_url": ""
+  },
+  {
+    "slug": "email-defense-without-enterprise-budget",
+    "title": "Email Defense Without Enterprise Budget",
+    "description": "Practical email filtering strategies for small organizations using keyword rules and sender whitelists to block phishing attempts.",
+    "date": "2026-02-19",
+    "file": "posts/email-defense-without-enterprise-budget.md",
+    "substack_url": ""
+  }
+]

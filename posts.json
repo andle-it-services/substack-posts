@@ -5,7 +5,7 @@
     "description": "Practical server automation for small IT shops using Ansible playbooks to provision secure Docker hosts with Fail2Ban and automatic updates.",
     "date": "2026-02-13",
     "file": "posts/ansible-hardened-docker.md",
-    "substack_url": ""
+    "substack_url": "https://open.substack.com/pub/andleit/p/hardened-docker-host-for-free-using"
   },
   {
     "slug": "email-defense-without-enterprise-budget",

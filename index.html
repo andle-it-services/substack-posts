@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andle IT Services — Writing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #141414;
+      --border: #222;
+      --accent: #00e5a0;
+      --accent-dim: rgba(0, 229, 160, 0.08);
+      --text: #e8e8e8;
+      --text-muted: #666;
+      --text-dim: #999;
+      --mono: 'IBM Plex Mono', monospace;
+      --sans: 'IBM Plex Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      padding: 0 1.5rem;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--mono);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    .tagline a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,229,160,0.3);
+      transition: border-color 0.2s;
+    }
+    .tagline a:hover { border-color: var(--accent); }
+
+    /* Post list */
+    .posts-header {
+      padding: 2.5rem 0 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .posts-header h2 {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .post-count {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,229,160,0.2);
+      padding: 0.1em 0.5em;
+      border-radius: 2px;
+    }
+
+    .posts-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .post-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      transition: border-color 0.2s, background 0.2s;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .post-item:hover {
+      border-color: rgba(0,229,160,0.3);
+      background: #161616;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .post-date {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .post-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+
+    .post-desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .post-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.35em 0.8em;
+      border-radius: 2px;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    .btn-md {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: transparent;
+    }
+    .btn-md:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-substack {
+      color: var(--accent);
+      border: 1px solid rgba(0,229,160,0.3);
+      background: var(--accent-dim);
+    }
+    .btn-substack:hover {
+      background: rgba(0,229,160,0.15);
+      border-color: var(--accent);
+    }
+
+    .btn-substack.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    #loading, #error {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 2rem 0;
+    }
+    #error { color: #ff6b6b; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="eyebrow">Andle IT Services</div>
+      <h1>Practical IT Security<br/>for Small Organizations</h1>
+      <p class="tagline">
+        No enterprise budget required. Posts also published on
+        <a href="https://substack.com/@andleitservices" target="_blank" rel="noopener">Substack</a>.
+        Source on <a href="https://github.com/andle-it-services" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+    </header>
+
+    <div class="posts-header">
+      <h2>Posts</h2>
+      <span class="post-count" id="post-count">—</span>
+    </div>
+
+    <div id="loading">Loading posts...</div>
+    <div id="error" style="display:none"></div>
+
+    <ul class="posts-list" id="posts-list" style="display:none"></ul>
+
+    <footer>
+      <span class="footer-left">© 2026 Andle IT Services LLC</span>
+      <nav class="footer-links">
+        <a href="https://substack.com/@andleitservices" target="_blank" rel="noopener">Substack</a>
+        <a href="https://github.com/andle-it-services" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script>
+    const REPO = 'andle-it-services/substack-posts';
+    const BASE = `https://raw.githubusercontent.com/${REPO}/main`;
+
+    async function loadPosts() {
+      const loading = document.getElementById('loading');
+      const error = document.getElementById('error');
+      const list = document.getElementById('posts-list');
+      const count = document.getElementById('post-count');
+
+      try {
+        const res = await fetch(`${BASE}/posts.json`);
+        if (!res.ok) throw new Error(`Failed to fetch posts.json (${res.status})`);
+        const posts = await res.json();
+
+        // Sort newest first
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        count.textContent = posts.length;
+        loading.style.display = 'none';
+        list.style.display = 'flex';
+
+        posts.forEach((post, i) => {
+          const li = document.createElement('li');
+          li.className = 'post-item';
+          li.style.animationDelay = `${i * 0.06}s`;
+
+          const mdUrl = `${BASE}/${post.file}`;
+          const rawUrl = `https://github.com/${REPO}/blob/main/${post.file}`;
+          const hasSubstack = post.substack_url && post.substack_url.trim() !== '';
+
+          li.innerHTML = `
+            <div class="post-meta">
+              <span class="post-date">${formatDate(post.date)}</span>
+            </div>
+            <div class="post-title">${escHtml(post.title)}</div>
+            <div class="post-desc">${escHtml(post.description)}</div>
+            <div class="post-links">
+              <a class="btn btn-md" href="${rawUrl}" target="_blank" rel="noopener">
+                ↗ Markdown
+              </a>
+              <a class="btn btn-substack ${hasSubstack ? '' : 'disabled'}"
+                 href="${hasSubstack ? escHtml(post.substack_url) : '#'}"
+                 target="_blank" rel="noopener"
+                 title="${hasSubstack ? 'Read on Substack' : 'Not yet published'}">
+                ${hasSubstack ? '↗ Substack' : '⏳ Coming soon'}
+              </a>
+            </div>
+          `;
+          list.appendChild(li);
+        });
+
+      } catch (e) {
+        loading.style.display = 'none';
+        error.style.display = 'block';
+        error.textContent = `Error loading posts: ${e.message}`;
+      }
+    }
+
+    function formatDate(dateStr) {
+      return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+        year: 'numeric', month: 'short', day: 'numeric'
+      });
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>
